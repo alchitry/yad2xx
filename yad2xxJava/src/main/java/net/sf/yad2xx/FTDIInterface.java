@@ -18,6 +18,8 @@
  */
 package net.sf.yad2xx;
 
+import java.io.IOException;
+
 /**
  * A Java Native Interface (JNI) wrapper that adapts the FTDI
  * D2XX library to a more OO based approach. This Singleton type
@@ -51,7 +53,11 @@ public class FTDIInterface {
 	 * is JVM/platform dependent.
 	 */
 	static {
-		System.loadLibrary("FTDIInterface");
+		try {
+			NativeUtils.loadLibraryFromJar("/" + System.mapLibraryName("FTDIInterface"));
+		} catch (IOException e) {
+			System.loadLibrary("FTDIInterface");
+		}
 	}
 
 	/**
