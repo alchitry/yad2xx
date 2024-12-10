@@ -54,7 +54,7 @@ public class FTDIInterface {
 	 */
 	static {
 		try {
-			NativeUtils.loadLibraryFromJar("/" + System.mapLibraryName("FTDIInterface"));
+			NativeUtils.loadLibraryFromJar("/" + System.mapLibraryName("FTDIInterface_" + System.getProperty("os.arch")));
 		} catch (IOException e) {
 			System.loadLibrary("FTDIInterface");
 		}
